@@ -122,17 +122,25 @@ def nav_papers():
                 print("Invalid file number.")
 
         elif user_input.startswith("del "):
-            try:
-                choice = int(user_input.split()[1])
-                if 1 <= choice <= len(papers):
-                    file_to_delete = os.path.join(papers_dir, papers[choice - 1])
-                    os.remove(file_to_delete)
-                    print(f"Deleted: {papers[choice - 1]}")
-                    papers.pop(choice - 1)  # Update the list
+            delete_input = user_input.split(" ", 1)[1].strip()
+            indices_to_delete = set()
+
+            for part in delete_input.split(","):
+                if "-" in part:
+                    start, end = map(int, part.split("-"))
+                    indices_to_delete.update(range(start, end + 1))
                 else:
-                    print("Invalid file number.")
-            except (ValueError, IndexError):
-                print("Invalid input. Use 'del <number>' to delete a file.")
+                    indices_to_delete.add(int(part))
+
+            indices_to_delete = sorted(indices_to_delete, reverse=True)  
+            for idx in indices_to_delete:
+                if 1 <= idx <= len(papers):
+                    file_to_delete = os.path.join(papers_dir, papers[idx - 1])
+                    os.remove(file_to_delete)
+                    print(f"Deleted: {papers[idx - 1]}")
+                    papers.pop(idx - 1)  # Update list to reflect deletion
+                else:
+                    print(f"Invalid index: {idx}")
 
         elif user_input.startswith("rn "):
             try:
