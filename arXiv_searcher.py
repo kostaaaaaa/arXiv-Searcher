@@ -51,6 +51,7 @@ def download_or_open(results, choice, action, filename=None):
         print(f"Opening PDF in browser: {paper.pdf_url}")
 
 def handle_user_navigation(results, limit, action, filename=None):
+    """Handle pagination and user selection of papers."""
     start_index = 0
     total_results = len(results)
 
@@ -58,11 +59,21 @@ def handle_user_navigation(results, limit, action, filename=None):
         current_page_results = results[start_index:start_index + limit]
         display_paginated_results(results, start_index, limit)
 
-        choice = input("Enter the number of the paper to access or '0' to exit: ")
+        choice = input("Enter the number of the paper to access, '+' for next page, '-' for previous page, or 0 to exit: ")
 
         if choice == "0":
             print("Exiting...")
-            return
+            return 
+        elif choice == "+":
+            if start_index + limit < total_results:
+                start_index += limit
+            else:
+                print("No more papers to display.")
+        elif choice == "-":
+            if start_index - limit >= 0:
+                start_index -= limit
+            else:
+                print("You are already on the first page.")
         elif choice.isdigit():
             choice = int(choice)
             if 1 <= choice <= len(results):
@@ -71,7 +82,7 @@ def handle_user_navigation(results, limit, action, filename=None):
             else:
                 print("Invalid selection.")
         else:
-            print("Invalid input. Please enter a valid number or '0'.")
+            print("Invalid input. Please enter a valid number, '+', '-', or '0'.")
 
 def nav_papers():
     papers_dir = "./papers"
