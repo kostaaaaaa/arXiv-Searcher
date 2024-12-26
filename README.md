@@ -152,4 +152,10 @@ Showing results 1 to 10 of 100.
 Enter the number of the paper to access, '+' for next page, '-' for previous page, or 0 to exit:
 ```
 
+### Requirements
+Necessary external packages are `arxiv` and `requests` which can be downloaded with the `requirements.txt` file
+```
+pip install -r requirements.txt
+```
+
 Have fun! :smiley:
