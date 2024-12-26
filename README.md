@@ -12,6 +12,12 @@ A terminal based arXiv search program that allows users to easily access arXiv r
 - Additional Queries
     - `--action` allows users the choice of either downloading or simply opening a paper, defaults to open
     - `--limit` allows users to change the amount of papers displayed per page on the navigation screen, defaults to 5
+    - `--filename` allows the user to specify the filename of the downloaded paper will be saved as in the papers folder
+    - `--nav_papers` allows users to view the list of papers downloaded for quick access
+        - `<number>` choosing a specific number associated to the paper will allow users to open it in their browser
+        - `del <number>` remove specific pdf files from the papers directory of the associated number
+        - `rn <number>` rename specific pdf files from the papers directory of the associated number
+        - `q` quit the navigation
 
 - Navigating Queries
 
@@ -19,7 +25,7 @@ A terminal based arXiv search program that allows users to easily access arXiv r
 
 Example `--topic` query:
 ```
-python .\main.py --topic "Quantum Computing" 
+python .\arXiv_searcher.py --topic "Quantum Computing" 
 ```
 Output:
 ```
@@ -69,7 +75,7 @@ If the users desired paper is found on this page, input the number associated to
 
 Example `--author` with `--limit`:
 ```
-python .\main.py --author "Sabine Hossenfelder" --limit 10
+python .\arXiv_searcher.py --author "Sabine Hossenfelder" --limit 10
 ```
 Output:
 ```
