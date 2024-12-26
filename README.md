@@ -15,7 +15,7 @@ A terminal based arXiv search program that allows users to easily access arXiv r
     - `--filename` allows the user to specify the filename of the downloaded paper will be saved as in the papers folder
     - `--nav_papers` allows users to view the list of papers downloaded for quick access
         - `<number>` choosing a specific number associated to the paper will allow users to open it in their browser
-        - `del <number>` remove specific pdf files from the papers directory of the associated number
+        - `del <number>` remove specific pdf files from the papers directory of the associated number (ranges and lists of values are able to be deleted as well)
         - `rn <number>` rename specific pdf files from the papers directory of the associated number
         - `q` quit the navigation
 
