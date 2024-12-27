@@ -52,6 +52,7 @@ async def athena_bot(ctx, *, args):
     # Pagination
     page = 0
     per_page = limit
+    last_message = None  # Track the last sent message
 
     def format_result(result, index):
         return (f"**[{index + 1}] {result.title}**\n"
@@ -61,10 +62,13 @@ async def athena_bot(ctx, *, args):
                 f"PDF: {result.pdf_url}\n")
 
     async def display_page(page):
+        nonlocal last_message
         start = page * per_page
         end = start + per_page
         message = "\n\n".join([format_result(results[i], i) for i in range(start, min(end, len(results)))])
-        await ctx.send(f"**Page {page + 1}/{(len(results) - 1) // per_page + 1}**\n{message}")
+        if last_message:
+            await last_message.delete()  # Delete the last page message
+        last_message = await ctx.send(f"**Page {page + 1}/{(len(results) - 1) // per_page + 1}**\n{message}")
 
     await display_page(page)
 
