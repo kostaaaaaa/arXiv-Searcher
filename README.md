@@ -157,5 +157,10 @@ Necessary external packages are `arxiv` and `requests` which can be downloaded w
 ```
 pip install -r requirements.txt
 ```
+<details>
+<summary>Discord Bot Alternative</summary>
+<br>
+Work in Progress 😢
+</details>
 
 Have fun! :smiley:
