@@ -161,6 +161,17 @@ pip install -r requirements.txt
 <summary>Discord Bot Alternative</summary>
 <br>
 Work in Progress 😢
+<br><br>
+<b>Current Objectives</b>
+<li>
+Fully accessible menu 
+</li>
+<li>
+Download feautre in specific text channel
+</li>
+<li>
+Lightweight easy functionality 
+</li>
 </details>
 
 Have fun! :smiley:
